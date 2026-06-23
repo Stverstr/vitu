@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VITU — Waar gesprekken de diepte in mogen</title>
+  <meta name="description" content="Een besloten meeting- en ontmoetingsruimte in Ursel. Voor kleine teams die ruimte willen voor diepgaande gesprekken, workshops en echte samenkomsten.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --terra:#B8705A;--terra-light:#C98972;--dark:#1C1C1A;
+      --cream:#F5F0EA;--white:#FAFAF8;--grey:#6B6B68;--light-grey:#E2DDD6;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--white);color:var(--dark);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem;transition:all .4s ease}
+    nav.scrolled{background:rgba(250,250,248,.96);backdrop-filter:blur(12px);padding:1.2rem 3rem;box-shadow:0 1px 0 var(--light-grey)}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:.28em;color:var(--white);text-decoration:none;transition:color .4s}
+    nav.scrolled .nav-logo{color:var(--dark)}
+    .nav-cta{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white);text-decoration:none;border:1px solid rgba(255,255,255,.55);padding:.55rem 1.4rem;transition:all .3s}
+    nav.scrolled .nav-cta{color:var(--dark);border-color:var(--dark)}
+    .nav-cta:hover{background:var(--terra);border-color:var(--terra);color:var(--white)!important}
+
+    /* HERO */
+    .hero{position:relative;height:100vh;min-height:640px;overflow:hidden}
+    .hero-img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,18,16,.25) 0%,rgba(20,18,16,.05) 45%,rgba(20,18,16,.55) 100%)}
+    .hero-content{position:absolute;bottom:12%;left:50%;transform:translateX(-50%);text-align:center;color:var(--white);width:100%;padding:0 2rem}
+    .hero-eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;opacity:.75;margin-bottom:1.2rem}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,10vw,9rem);font-weight:300;line-height:.9;letter-spacing:.12em;margin-bottom:1.8rem}
+    .hero-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.55rem);font-weight:300;font-style:italic;opacity:.88}
+    .scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
+    .scroll-line{width:1px;height:48px;background:rgba(255,255,255,.35);animation:pulse 2.2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:.35;transform:scaleY(1) translateY(0)}50%{opacity:.8;transform:scaleY(.65) translateY(-4px)}}
+
+    /* SHARED */
+    section{padding:6rem 0}
+    .container{max-width:1140px;margin:0 auto;padding:0 2.5rem}
+    .container--narrow{max-width:700px;margin:0 auto;padding:0 2.5rem}
+    .label{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:1.4rem}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:300;line-height:1.15}
+
+    /* INTRO */
+    .intro{background:var(--cream)}
+    .intro-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.2vw,2.2rem);font-weight:300;line-height:1.55;color:var(--dark)}
+    .intro-headline em{font-style:italic;color:var(--terra)}
+    .intro-body{margin-top:2.2rem;font-size:.94rem;line-height:1.9;color:var(--grey);max-width:600px}
+    .intro-pills{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem}
+    .pill{font-size:.75rem;letter-spacing:.1em;padding:.45rem 1.1rem;border:1px solid var(--light-grey);color:var(--grey)}
+
+    /* GALLERY */
+    .gallery{background:var(--white);padding-top:0}
+    .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+    .gi{overflow:hidden}
+    .gi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.46,.45,.94)}
+    .gi:hover img{transform:scale(1.04)}
+    .g1{grid-column:1/8;height:440px}
+    .g2{grid-column:8/13;height:440px}
+    .g3{grid-column:1/5;height:300px}
+    .g4{grid-column:5/9;height:300px}
+    .g5{grid-column:9/13;height:300px}
+
+    /* KENMERKEN */
+    .kenmerken{background:var(--dark)}
+    .kenmerken .label{color:rgba(255,255,255,.4)}
+    .kenmerken-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.5rem;border-top:1px solid rgba(255,255,255,.08);padding-top:2.5rem;margin-top:3rem}
+    .kenmerk-nr{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--terra);line-height:1;margin-bottom:.8rem}
+    .kenmerk-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--white);margin-bottom:.6rem;font-weight:400}
+    .kenmerk-desc{font-size:.83rem;color:rgba(255,255,255,.42);line-height:1.75}
+
+    /* QUOTE */
+    .quote-section{background:var(--cream);padding:5rem 0;text-align:center}
+    .quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.1rem);font-weight:300;font-style:italic;line-height:1.55;color:var(--dark);max-width:680px;margin:0 auto}
+    .quote-source{margin-top:1.5rem;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--terra)}
+
+    /* FORMULES */
+    .formules{background:var(--white)}
+    .formules-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;gap:2rem;flex-wrap:wrap}
+    .formules-note{font-size:.83rem;color:var(--grey);max-width:280px;line-height:1.7}
+    .formules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5px;background:var(--light-grey);border:1px solid var(--light-grey)}
+    .formule-card{background:var(--white);padding:3rem 2.5rem}
+    .formule-card.featured{background:var(--terra)}
+    .formule-badge{display:inline-block;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--light-grey);padding:.25rem .7rem;color:var(--grey);margin-bottom:2rem}
+    .formule-card.featured .formule-badge{border-color:rgba(255,255,255,.35);color:rgba(255,255,255,.7)}
+    .formule-naam{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;margin-bottom:.4rem}
+    .formule-card.featured .formule-naam{color:var(--white)}
+    .formule-prijs{font-size:2.4rem;font-weight:300;margin-bottom:.2rem;line-height:1}
+    .formule-card.featured .formule-prijs{color:var(--white)}
+    .formule-prijs-note{font-size:.78rem;color:var(--grey);margin-bottom:1.8rem}
+    .formule-card.featured .formule-prijs-note{color:rgba(255,255,255,.6)}
+    .formule-desc{font-size:.88rem;line-height:1.8;color:var(--grey);margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--light-grey)}
+    .formule-card.featured .formule-desc{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2)}
+    .formule-list{list-style:none;font-size:.84rem;line-height:2.1;color:var(--grey)}
+    .formule-card.featured .formule-list{color:rgba(255,255,255,.75)}
+    .formule-list li{display:flex;align-items:center;gap:.6rem}
+    .formule-list li::before{content:'';width:16px;height:1px;background:var(--terra);flex-shrink:0}
+    .formule-card.featured .formule-list li::before{background:rgba(255,255,255,.5)}
+    .formule-extra{margin-top:1.8rem;font-size:.75rem;color:var(--grey);font-style:italic}
+    .formule-card.featured .formule-extra{color:rgba(255,255,255,.5)}
+
+    /* BREDE FOTO */
+    .foto-breed{height:60vh;min-height:360px;overflow:hidden}
+    .foto-breed img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+
+    /* CONTACT */
+    .contact{background:var(--cream)}
+    .contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:7rem;align-items:start}
+    .contact-body{font-size:.9rem;color:var(--grey);line-height:1.85;margin-top:1.5rem}
+    .contact-detail{margin-top:3rem;font-size:.82rem;color:var(--grey);line-height:1.9}
+    .contact-detail dt{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dark);margin-top:1.5rem}
+    .form-row{margin-bottom:1.8rem}
+    .form-row label{display:block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:.6rem}
+    .form-row input,.form-row select,.form-row textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--light-grey);padding:.7rem 0;font-family:'Inter',sans-serif;font-size:.93rem;color:var(--dark);outline:none;transition:border-color .3s;-webkit-appearance:none}
+    .form-row input::placeholder,.form-row textarea::placeholder{color:#bbb}
+    .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-bottom-color:var(--terra)}
+    .form-row textarea{resize:none;height:88px}
+    .form-row select{cursor:pointer}
+    .form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .btn-aanvragen{display:block;width:100%;margin-top:.5rem;padding:1rem 2.8rem;background:var(--dark);color:var(--white);font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s}
+    .btn-aanvragen:hover{background:var(--terra)}
+    .form-feedback{display:none;margin-top:1.2rem;padding:1rem 1.2rem;background:rgba(184,112,90,.1);border-left:2px solid var(--terra);font-size:.83rem;color:var(--dark);line-height:1.6}
+
+    /* FOOTER */
+    footer{background:var(--dark);padding:3rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;letter-spacing:.3em;color:rgba(255,255,255,.65)}
+    .footer-info{font-size:.75rem;letter-spacing:.06em;color:rgba(255,255,255,.25);text-align:right}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      nav{padding:1.4rem 1.8rem}
+      nav.scrolled{padding:1rem 1.8rem}
+      .g1{grid-column:1/8;height:280px}
+      .g2{grid-column:8/13;height:280px}
+      .g3{grid-column:1/5;height:200px}
+      .g4{grid-column:5/9;height:200px}
+      .g5{grid-column:9/13;height:200px}
+      .contact-wrap{grid-template-columns:1fr;gap:3.5rem}
+      .formules-intro{flex-direction:column;align-items:flex-start}
+      .form-grid-2{grid-template-columns:1fr}
+      footer{flex-direction:column;align-items:flex-start}
+      .footer-info{text-align:left}
+    }
+    @media(max-width:600px){
+      section{padding:4rem 0}
+      .gallery-grid{grid-template-columns:1fr 1fr;gap:6px}
+      .g1{grid-column:1/3;height:240px}
+      .g2{grid-column:1/2;height:180px}
+      .g3{grid-column:2/3;height:180px}
+      .g4{grid-column:1/2;height:180px}
+      .g5{grid-column:2/3;height:180px}
+      .kenmerken-grid{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">VITU</a>
+  <a href="#contact" class="nav-cta">Vraag een datum aan</a>
+</nav>
+
+<section class="hero">
+  <img src="photos/hero.jpeg" alt="VITU tuin en terras" class="hero-img" loading="eager">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Villa te Ursel &nbsp;&middot;&nbsp; Oost-Vlaanderen</p>
+    <h1 class="hero-title">VITU</h1>
+    <p class="hero-tagline">Waar gesprekken de diepte in mogen.</p>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="container--narrow">
+    <p class="label">Wat is VITU</p>
+    <p class="intro-headline">
+      Een besloten plek buiten kantoor &mdash;<br>
+      maar niet voor een gewone dag.<br>
+      Voor teams die <em>&eacute;&eacute;kt iets te bespreken hebben.</em>
+    </p>
+    <p class="intro-body">
+      VITU is geen vergaderzaal. Het is een intieme, rustige omgeving
+      midden in de velden van Ursel, waar de tuin naadloos overloopt in de
+      meetingroom en het gesprek zijn eigen richting vindt. Voor workshops die
+      ergens naartoe moeten. Voor strategische debatten zonder afleiding.
+      Voor een team dat even buiten zijn eigen muren moet denken.
+    </p>
+    <p class="intro-body" style="margin-top:1rem">
+      Maximaal 8 personen. Volledig exclusief voor uw groep.
+      Op 10 minuten van afrit Aalter &mdash; maar in een compleet andere wereld.
+    </p>
+    <div class="intro-pills">
+      <span class="pill">Workshops</span>
+      <span class="pill">Strategische sessies</span>
+      <span class="pill">Jaarplanning</span>
+      <span class="pill">Besloten overleg</span>
+      <span class="pill">Creatieve sprint</span>
+      <span class="pill">Team retreat</span>
+      <span class="pill">Werklunch</span>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="container">
+    <p class="label">De ruimte</p>
+    <div class="gallery-grid">
+      <div class="gi g1"><img src="photos/garden1.jpeg" alt="VITU tuin" loading="lazy"></div>
+      <div class="gi g2"><img src="photos/columns.jpeg" alt="VITU overdekte wandelgang" loading="lazy"></div>
+      <div class="gi g3"><img src="photos/gate.jpeg" alt="VITU ingang" loading="lazy"></div>
+      <div class="gi g4"><img src="photos/kitchen.jpeg" alt="VITU keuken" loading="lazy"></div>
+      <div class="gi g5"><img src="photos/team.jpeg" alt="Team bij VITU" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="kenmerken">
+  <div class="container">
+    <p class="label">De faciliteiten</p>
+    <h2 class="section-title" style="color:var(--white);margin-bottom:0">Alles aanwezig.<br>Niets overbodig.</h2>
+    <div class="kenmerken-grid">
+      <div class="kenmerk">
+        <div class="kenmerk-nr">01</div>
+        <div class="kenmerk-name">Meetingroom</div>
+        <p class="kenmerk-desc">Volledig uitgerust met scherm, wifi en whiteboard. Naadloos verbonden met het terras en de tuin.</p>
+      </div>
+      <div class="kenmerk">
+        <div class="kenmerk-nr">02</div>
+        <div class="kenmerk-name">Bureau &amp; breakout</div>
+        <p class="kenmerk-desc">Een aparte ruimte om even weg te stappen van de groep. Om te bellen, te schrijven of na te denken.</p>
+      </div>
+      <div class="kenmerk">
+        <div class="kenmerk-nr">03</div>
+        <div class="kenmerk-name">Uitgeruste keuken</div>
+        <p class="kenmerk-desc">Zelf koken of catering laten leveren. Drankjes, koffie en verse lunch &mdash; op maat geregeld.</p>
+      </div>
+      <div class="kenmerk">
+        <div class="kenmerk-nr">04</div>
+        <div class="kenmerk-name">Tuin &amp; terras</div>
+        <p class="kenmerk-desc">In de zomer opent alles. Vergaderen buiten, wandelen, even stilstaan. De natuur doet de rest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="container">
+    <p class="quote-text">
+      &ldquo;Sommige gesprekken kunnen alleen goed gaan<br>
+      als de omgeving het toelaat.&rdquo;
+    </p>
+    <p class="quote-source">VITU &nbsp;&middot;&nbsp; Ursel</p>
+  </div>
+</section>
+
+<section class="formules">
+  <div class="container">
+    <div class="formules-intro">
+      <div>
+        <p class="label">Formules</p>
+        <h2 class="section-title">Kies uw dag</h2>
+      </div>
+      <p class="formules-note">Catering op aanvraag: &euro;35&ndash;50/persoon. Prijzen excl. btw.</p>
+    </div>
+    <div class="formules-grid">
+      <div class="formule-card">
+        <div class="formule-badge">Halve dag</div>
+        <h3 class="formule-naam">Ochtend of middag</h3>
+        <p class="formule-prijs">&euro;450</p>
+        <p class="formule-prijs-note">4 uur exclusief gebruik &middot; excl. btw</p>
+        <p class="formule-desc">Gericht, compact en effici&euml;nt. Ideaal voor een gerichte workshop, een beslissend overleg of een creatieve intake met een klein team.</p>
+        <ul class="formule-list">
+          <li>Meetingroom + terras</li>
+          <li>Wifi &amp; presentatiescherm</li>
+          <li>Koffie &amp; drankjes inbegrepen</li>
+          <li>Toilet &amp; douche</li>
+          <li>Max. 8 personen</li>
+        </ul>
+        <p class="formule-extra">Catering op aanvraag</p>
+      </div>
+      <div class="formule-card featured">
+        <div class="formule-badge">Meest gevraagd</div>
+        <h3 class="formule-naam">Volledige dag</h3>
+        <p class="formule-prijs" style="color:var(--white)">&euro;750</p>
+        <p class="formule-prijs-note">8 uur exclusief gebruik &middot; excl. btw</p>
+        <p class="formule-desc">De ruimte om &eacute;cht iets te bereiken. Ruim genoeg voor ochtendssessie, werklunch en een namiddag die ergens naartoe leidt.</p>
+        <ul class="formule-list">
+          <li>Alles van de halfdagformule</li>
+          <li>Bureau als breakout-ruimte</li>
+          <li>Volledige dag (8u) exclusief</li>
+          <li>Tuin &amp; buitenruimtes</li>
+          <li>Catering volledig op maat</li>
+        </ul>
+        <p class="formule-extra">Inclusief begeleide lunch op aanvraag</p>
+      </div>
+      <div class="formule-card">
+        <div class="formule-badge">Op maat</div>
+        <h3 class="formule-naam">Meerdere dagen</h3>
+        <p class="formule-prijs">Op aanvraag</p>
+        <p class="formule-prijs-note">Tweedaags retreat of reeks sessies</p>
+        <p class="formule-desc">Voor wie echt de tijd wil nemen. Een tweedaagse strategische diepteduik, een reeks maandelijkse sessies, of iets dat we samen samenstellen.</p>
+        <ul class="formule-list">
+          <li>Volledig op maat</li>
+          <li>Catering volledig voorzien</li>
+          <li>Flexibele opbouw</li>
+          <li>Eventueel gastfacilitator</li>
+        </ul>
+        <p class="formule-extra">Prijs op aanvraag &middot; Beschikbaarheid beperkt</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="foto-breed">
+  <img src="photos/inside.jpeg" alt="VITU binnenruimte" loading="lazy">
+</div>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div>
+        <p class="label">Reserveren</p>
+        <h2 class="section-title">Vraag een datum aan</h2>
+        <p class="contact-body">Vertel ons kort wat u in gedachten heeft. We antwoorden binnen 24 uur en bekijken samen of de datum beschikbaar is.</p>
+        <dl class="contact-detail">
+          <dt>Locatie</dt>
+          <dd>Ursel, Oost-Vlaanderen<br><small style="opacity:.6">(exact adres na bevestiging)</small></dd>
+          <dt>Bereikbaarheid</dt>
+          <dd>10 min. van E40 afrit Aalter</dd>
+          <dt>Capaciteit</dt>
+          <dd>Maximum 8 personen</dd>
+          <dt>Beschikbaarheid</dt>
+          <dd>Halve en volledige dag</dd>
+        </dl>
+      </div>
+      <div>
+        <form id="aanvraagForm">
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label>Naam *</label>
+              <input type="text" id="f-naam" placeholder="Uw naam" required>
+            </div>
+            <div class="form-row">
+              <label>Organisatie</label>
+              <input type="text" id="f-org" placeholder="Bedrijf of team">
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label>Aantal personen</label>
+              <select id="f-personen">
+                <option value="">-- kies --</option>
+                <option>2 personen</option>
+                <option>3 personen</option>
+                <option>4 personen</option>
+                <option>5 personen</option>
+                <option>6 personen</option>
+                <option>7 personen</option>
+                <option>8 personen</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Formule</label>
+              <select id="f-formule">
+                <option value="">-- kies --</option>
+                <option>Halve dag (450 euro)</option>
+                <option>Volledige dag (750 euro)</option>
+                <option>Op maat / meerdere dagen</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Gewenste datum(s)</label>
+            <input type="text" id="f-datum" placeholder="bv. week van 15 september, of flexibel">
+          </div>
+          <div class="form-row">
+            <label>Waarvoor wil u VITU gebruiken? *</label>
+            <textarea id="f-bericht" placeholder="Een strategische sessie, jaarplanning, workshop, ..." required></textarea>
+          </div>
+          <button type="submit" class="btn-aanvragen">Stuur aanvraag</button>
+          <div class="form-feedback" id="formFeedback">Uw e-mailprogramma opent met een vooraf ingevulde boodschap. Verstuur de mail om uw aanvraag te bevestigen -- we antwoorden binnen 24 uur.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">VITU</div>
+  <div class="footer-info">Villa te Ursel &middot; Oost-Vlaanderen<br>&copy; 2025 VITU</div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)},{passive:true});
+document.getElementById('aanvraagForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const naam=document.getElementById('f-naam').value.trim();
+  const org=document.getElementById('f-org').value.trim();
+  const personen=document.getElementById('f-personen').value;
+  const formule=document.getElementById('f-formule').value;
+  const datum=document.getElementById('f-datum').value.trim();
+  const bericht=document.getElementById('f-bericht').value.trim();
+  if(!naam||!bericht)return;
+  const subject='Aanvraag VITU -- '+(org||naam);
+  const body='Hallo,\n\nIk wil graag een dag bij VITU aanvragen.\n\nNaam: '+naam+'\n'+(org?'Organisatie: '+org+'\n':'')+(personen?'Aantal personen: '+personen+'\n':'')+(formule?'Formule: '+formule+'\n':'')+(datum?'Datum(s): '+datum+'\n':'')+'\nWaarvoor:\n'+bericht+'\n\nMet vriendelijke groeten,\n'+naam;
+  window.location.href='mailto:stijn@stoover.be?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  document.getElementById('formFeedback').style.display='block';
+});
+</script>
+</body>
+</html>
