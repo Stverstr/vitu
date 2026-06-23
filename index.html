@@ -4,206 +4,209 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VITU — Een plek voor gesprekken die tellen</title>
-  <meta name="description" content="Een besloten, privé ontmoetingsplek in Ursel. Voor kleine teams die ruimte willen voor diepgaande gesprekken, workshops of gewoon een dag buiten het kantoor.">
+  <meta name="description" content="Een besloten, privé ontmoetingsplek in Ursel. Workshops, strategische sessies, teamdagen. Max. 8 personen, volledig exclusief.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --terra:#B8705A;--dark:#1C1C1A;
-      --cream:#F5F0EA;--white:#FAFAF8;--grey:#6B6B68;--light-grey:#E2DDD6;
-    }
+    :root{--terra:#B8705A;--dark:#1C1C1A;--cream:#F5F0EA;--white:#FAFAF8;--grey:#6B6B68;--lg:#E2DDD6}
     html{scroll-behavior:smooth}
     body{font-family:'Inter',sans-serif;background:var(--white);color:var(--dark);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem;transition:all .4s ease}
-    nav.scrolled{background:rgba(250,250,248,.96);backdrop-filter:blur(12px);padding:1.2rem 3rem;box-shadow:0 1px 0 var(--light-grey)}
-    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:.28em;color:var(--white);text-decoration:none;transition:color .4s}
-    nav.scrolled .nav-logo{color:var(--dark)}
-    .nav-cta{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white);text-decoration:none;border:1px solid rgba(255,255,255,.55);padding:.55rem 1.4rem;transition:all .3s}
-    nav.scrolled .nav-cta{color:var(--dark);border-color:var(--dark)}
-    .nav-cta:hover{background:var(--terra);border-color:var(--terra);color:var(--white)!important}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem;transition:all .4s}
+    nav.scrolled{background:rgba(250,250,248,.96);backdrop-filter:blur(12px);padding:1.2rem 3rem;box-shadow:0 1px 0 var(--lg)}
+    .nl{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:.28em;color:var(--white);text-decoration:none;transition:color .4s}
+    nav.scrolled .nl{color:var(--dark)}
+    .nc{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white);text-decoration:none;border:1px solid rgba(255,255,255,.55);padding:.55rem 1.4rem;transition:all .3s}
+    nav.scrolled .nc{color:var(--dark);border-color:var(--dark)}
+    .nc:hover{background:var(--terra)!important;border-color:var(--terra)!important;color:var(--white)!important}
 
-    /* HERO */
-    .hero{position:relative;height:100vh;min-height:640px;overflow:hidden}
-    .hero-img{width:100%;height:100%;object-fit:cover;object-position:center 50%}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,18,16,.2) 0%,rgba(20,18,16,.05) 40%,rgba(20,18,16,.6) 100%)}
-    .hero-content{position:absolute;bottom:12%;left:50%;transform:translateX(-50%);text-align:center;color:var(--white);width:100%;padding:0 2rem}
-    .hero-eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;opacity:.7;margin-bottom:1.2rem}
-    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,10vw,9rem);font-weight:300;line-height:.9;letter-spacing:.12em;margin-bottom:1.8rem}
-    .hero-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.55rem);font-weight:300;font-style:italic;opacity:.88}
-    .scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
-    .scroll-line{width:1px;height:48px;background:rgba(255,255,255,.35);animation:pulse 2.2s ease-in-out infinite}
-    @keyframes pulse{0%,100%{opacity:.35;transform:scaleY(1)}50%{opacity:.8;transform:scaleY(.6)}}
+    .hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+    .hero img{width:100%;height:100%;object-fit:cover;object-position:center 45%}
+    .hero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,18,16,.15) 0%,rgba(20,18,16,.0) 40%,rgba(20,18,16,.62) 100%)}
+    .hero-cnt{position:absolute;bottom:11%;left:50%;transform:translateX(-50%);text-align:center;color:var(--white);width:100%;padding:0 2rem}
+    .hero-ey{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;opacity:.7;margin-bottom:1.2rem}
+    .hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,10vw,9rem);font-weight:300;line-height:.9;letter-spacing:.12em;margin-bottom:1.8rem}
+    .hero-tl{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.55rem);font-weight:300;font-style:italic;opacity:.88}
+    .sh{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
+    .sl{width:1px;height:48px;background:rgba(255,255,255,.35);animation:p 2.2s ease-in-out infinite}
+    @keyframes p{0%,100%{opacity:.35;transform:scaleY(1)}50%{opacity:.8;transform:scaleY(.6)}}
 
-    /* SHARED */
     section{padding:6rem 0}
-    .container{max-width:1140px;margin:0 auto;padding:0 2.5rem}
-    .container--narrow{max-width:700px;margin:0 auto;padding:0 2.5rem}
-    .label{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:1.4rem}
-    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:300;line-height:1.15}
+    .ct{max-width:1140px;margin:0 auto;padding:0 2.5rem}
+    .ctn{max-width:700px;margin:0 auto;padding:0 2.5rem}
+    .lbl{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:1.4rem}
+    .st{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:300;line-height:1.15}
 
-    /* INTRO */
+    .banner{background:var(--dark);padding:2.2rem 0;text-align:center}
+    .binner{display:flex;justify-content:center;align-items:center;gap:2.5rem;flex-wrap:wrap;padding:0 2rem}
+    .bi{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.42);display:flex;align-items:center;gap:.7rem}
+    .bi::before{content:'';width:18px;height:1px;background:var(--terra);flex-shrink:0}
+
     .intro{background:var(--cream)}
-    .intro-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.2vw,2.2rem);font-weight:300;line-height:1.55;color:var(--dark)}
-    .intro-headline em{font-style:italic;color:var(--terra)}
-    .intro-body{margin-top:2rem;font-size:.94rem;line-height:1.9;color:var(--grey);max-width:600px}
-    .intro-pills{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem}
-    .pill{font-size:.75rem;letter-spacing:.08em;padding:.45rem 1.1rem;border:1px solid var(--light-grey);color:var(--grey)}
-
-    /* BESLOTEN BANNER */
-    .besloten{background:var(--dark);padding:2.5rem 0;text-align:center}
-    .besloten-inner{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap}
-    .besloten-item{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:.8rem}
-    .besloten-item::before{content:'';width:20px;height:1px;background:var(--terra)}
+    .ih{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.2vw,2.2rem);font-weight:300;line-height:1.55}
+    .ih em{font-style:italic;color:var(--terra)}
+    .ib{margin-top:2rem;font-size:.94rem;line-height:1.9;color:var(--grey);max-width:600px}
+    .host-note{margin-top:2rem;padding:1.4rem 1.8rem;border-left:2px solid var(--terra);background:rgba(184,112,90,.07);font-size:.88rem;line-height:1.8;color:var(--grey);max-width:600px}
+    .host-note strong{color:var(--dark);font-weight:500}
+    .pills{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem}
+    .pill{font-size:.75rem;letter-spacing:.08em;padding:.45rem 1.1rem;border:1px solid var(--lg);color:var(--grey)}
 
     /* GALLERY */
     .gallery{background:var(--white);padding-top:0}
-    .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
-    .gi{overflow:hidden}
+    .g-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:8px}
+    .gi{overflow:hidden;background:var(--lg)}
     .gi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.46,.45,.94)}
     .gi:hover img{transform:scale(1.04)}
-    .g1{grid-column:1/8;height:440px}
-    .g2{grid-column:8/13;height:440px}
-    .g3{grid-column:1/5;height:300px}
-    .g4{grid-column:5/9;height:300px}
-    .g5{grid-column:9/13;height:300px}
+    /* Row 1 */
+    .r1a{grid-column:1/8;height:400px}
+    .r1b{grid-column:8/13;height:400px}
+    /* Row 2 */
+    .r2a{grid-column:1/5;height:280px}
+    .r2b{grid-column:5/9;height:280px}
+    .r2c{grid-column:9/13;height:280px}
+    /* Row 3 */
+    .r3a{grid-column:1/4;height:260px}
+    .r3b{grid-column:4/8;height:260px}
+    .r3c{grid-column:8/10;height:260px}
+    .r3d{grid-column:10/13;height:260px}
 
-    /* KENMERKEN */
-    .kenmerken{background:var(--dark)}
-    .kenmerken .label{color:rgba(255,255,255,.4)}
-    .kenmerken-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.5rem;border-top:1px solid rgba(255,255,255,.08);padding-top:2.5rem;margin-top:3rem}
-    .kenmerk-nr{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--terra);line-height:1;margin-bottom:.8rem}
-    .kenmerk-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--white);margin-bottom:.6rem;font-weight:400}
-    .kenmerk-desc{font-size:.83rem;color:rgba(255,255,255,.42);line-height:1.75}
+    .ken{background:var(--dark)}
+    .ken .lbl{color:rgba(255,255,255,.4)}
+    .kgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.5rem;border-top:1px solid rgba(255,255,255,.08);padding-top:2.5rem;margin-top:3rem}
+    .knr{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--terra);line-height:1;margin-bottom:.8rem}
+    .kna{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--white);margin-bottom:.6rem;font-weight:400}
+    .kde{font-size:.83rem;color:rgba(255,255,255,.42);line-height:1.75}
 
-    /* QUOTE */
-    .quote-section{background:var(--cream);padding:5rem 0;text-align:center}
-    .quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.1rem);font-weight:300;font-style:italic;line-height:1.55;color:var(--dark);max-width:680px;margin:0 auto}
-    .quote-source{margin-top:1.5rem;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--terra)}
+    .qs{background:var(--cream);padding:5rem 0;text-align:center}
+    .qt{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.1rem);font-weight:300;font-style:italic;line-height:1.55;color:var(--dark);max-width:680px;margin:0 auto}
+    .qsrc{margin-top:1.5rem;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--terra)}
 
-    /* FORMULES */
-    .formules{background:var(--white)}
-    .formules-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;gap:2rem;flex-wrap:wrap}
-    .formules-note{font-size:.83rem;color:var(--grey);max-width:280px;line-height:1.7}
-    .formules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5px;background:var(--light-grey);border:1px solid var(--light-grey)}
-    .formule-card{background:var(--white);padding:3rem 2.5rem}
-    .formule-card.featured{background:var(--terra)}
-    .formule-badge{display:inline-block;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--light-grey);padding:.25rem .7rem;color:var(--grey);margin-bottom:2rem}
-    .formule-card.featured .formule-badge{border-color:rgba(255,255,255,.35);color:rgba(255,255,255,.7)}
-    .formule-naam{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;margin-bottom:.4rem}
-    .formule-card.featured .formule-naam{color:var(--white)}
-    .formule-prijs{font-size:2.4rem;font-weight:300;margin-bottom:.2rem;line-height:1}
-    .formule-card.featured .formule-prijs{color:var(--white)}
-    .formule-prijs-note{font-size:.78rem;color:var(--grey);margin-bottom:1.8rem}
-    .formule-card.featured .formule-prijs-note{color:rgba(255,255,255,.6)}
-    .formule-desc{font-size:.88rem;line-height:1.8;color:var(--grey);margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--light-grey)}
-    .formule-card.featured .formule-desc{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2)}
-    .formule-list{list-style:none;font-size:.84rem;line-height:2.1;color:var(--grey)}
-    .formule-card.featured .formule-list{color:rgba(255,255,255,.75)}
-    .formule-list li{display:flex;align-items:center;gap:.6rem}
-    .formule-list li::before{content:'';width:16px;height:1px;background:var(--terra);flex-shrink:0}
-    .formule-card.featured .formule-list li::before{background:rgba(255,255,255,.5)}
-    .formule-extra{margin-top:1.8rem;font-size:.75rem;color:var(--grey);font-style:italic}
-    .formule-card.featured .formule-extra{color:rgba(255,255,255,.5)}
+    .form-sec{background:var(--white)}
+    .fi{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;gap:2rem;flex-wrap:wrap}
+    .fn{font-size:.83rem;color:var(--grey);max-width:300px;line-height:1.75}
+    .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5px;background:var(--lg);border:1px solid var(--lg)}
+    .fc{background:var(--white);padding:3rem 2.5rem}
+    .fc.ft{background:var(--terra)}
+    .fb{display:inline-block;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--lg);padding:.25rem .7rem;color:var(--grey);margin-bottom:.8rem}
+    .fc.ft .fb{border-color:rgba(255,255,255,.35);color:rgba(255,255,255,.7)}
+    .fop{display:inline-block;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;background:var(--terra);color:var(--white);padding:.2rem .6rem;margin-bottom:1.4rem;margin-left:.4rem}
+    .fc.ft .fop{background:rgba(255,255,255,.25);color:var(--white)}
+    .fna{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;margin-bottom:.4rem}
+    .fc.ft .fna{color:var(--white)}
+    .fpr{font-size:2.4rem;font-weight:300;margin-bottom:.1rem;line-height:1}
+    .fc.ft .fpr{color:var(--white)}
+    .fpn{font-size:.78rem;color:var(--grey);margin-bottom:1.8rem}
+    .fc.ft .fpn{color:rgba(255,255,255,.6)}
+    .fds{font-size:.88rem;line-height:1.8;color:var(--grey);margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--lg)}
+    .fc.ft .fds{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2)}
+    .fl{list-style:none;font-size:.84rem;line-height:2.1;color:var(--grey)}
+    .fc.ft .fl{color:rgba(255,255,255,.75)}
+    .fl li{display:flex;align-items:center;gap:.6rem}
+    .fl li::before{content:'';width:16px;height:1px;background:var(--terra);flex-shrink:0}
+    .fc.ft .fl li::before{background:rgba(255,255,255,.5)}
+    .fex{margin-top:1.8rem;font-size:.75rem;color:var(--grey);font-style:italic}
+    .fc.ft .fex{color:rgba(255,255,255,.5)}
 
-    /* BREDE FOTO */
-    .foto-breed{height:60vh;min-height:360px;overflow:hidden}
-    .foto-breed img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+    .fb-breed{height:55vh;min-height:340px;overflow:hidden}
+    .fb-breed img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
 
-    /* CONTACT */
     .contact{background:var(--cream)}
-    .contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:7rem;align-items:start}
-    .contact-body{font-size:.9rem;color:var(--grey);line-height:1.85;margin-top:1.5rem}
-    .contact-detail{margin-top:3rem;font-size:.82rem;color:var(--grey);line-height:1.9}
-    .contact-detail dt{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dark);margin-top:1.5rem}
-    .form-row{margin-bottom:1.8rem}
-    .form-row label{display:block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:.6rem}
-    .form-row input,.form-row select,.form-row textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--light-grey);padding:.7rem 0;font-family:'Inter',sans-serif;font-size:.93rem;color:var(--dark);outline:none;transition:border-color .3s;-webkit-appearance:none}
-    .form-row input::placeholder,.form-row textarea::placeholder{color:#bbb}
-    .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-bottom-color:var(--terra)}
-    .form-row textarea{resize:none;height:88px}
-    .form-row select{cursor:pointer}
-    .form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-    .btn-aanvragen{display:block;width:100%;margin-top:.5rem;padding:1rem 2.8rem;background:var(--dark);color:var(--white);font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s}
-    .btn-aanvragen:hover{background:var(--terra)}
-    .form-feedback{display:none;margin-top:1.2rem;padding:1rem 1.2rem;background:rgba(184,112,90,.1);border-left:2px solid var(--terra);font-size:.83rem;color:var(--dark);line-height:1.6}
+    .cwrap{display:grid;grid-template-columns:1fr 1.2fr;gap:7rem;align-items:start}
+    .cbody{font-size:.9rem;color:var(--grey);line-height:1.85;margin-top:1.5rem}
+    .cdet{margin-top:3rem;font-size:.82rem;color:var(--grey);line-height:1.9}
+    .cdet dt{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dark);margin-top:1.5rem}
+    .fr{margin-bottom:1.8rem}
+    .fr label{display:block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:.6rem}
+    .fr input,.fr select,.fr textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--lg);padding:.7rem 0;font-family:'Inter',sans-serif;font-size:.93rem;color:var(--dark);outline:none;transition:border-color .3s;-webkit-appearance:none}
+    .fr input::placeholder,.fr textarea::placeholder{color:#bbb}
+    .fr input:focus,.fr select:focus,.fr textarea:focus{border-bottom-color:var(--terra)}
+    .fr textarea{resize:none;height:88px}
+    .fr select{cursor:pointer}
+    .fg2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .btn{display:block;width:100%;margin-top:.5rem;padding:1rem 2.8rem;background:var(--dark);color:var(--white);font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s}
+    .btn:hover{background:var(--terra)}
+    .ffb{display:none;margin-top:1.2rem;padding:1rem 1.2rem;background:rgba(184,112,90,.1);border-left:2px solid var(--terra);font-size:.83rem;color:var(--dark);line-height:1.6}
 
-    /* FOOTER */
     footer{background:var(--dark);padding:3rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;letter-spacing:.3em;color:rgba(255,255,255,.65)}
-    .footer-info{font-size:.75rem;letter-spacing:.06em;color:rgba(255,255,255,.25);text-align:right}
+    .flogo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;letter-spacing:.3em;color:rgba(255,255,255,.65)}
+    .finfo{font-size:.75rem;letter-spacing:.06em;color:rgba(255,255,255,.25);text-align:right}
 
-    /* RESPONSIVE */
     @media(max-width:900px){
       nav{padding:1.4rem 1.8rem}nav.scrolled{padding:1rem 1.8rem}
-      .g1{grid-column:1/8;height:280px}.g2{grid-column:8/13;height:280px}
-      .g3{grid-column:1/5;height:200px}.g4{grid-column:5/9;height:200px}.g5{grid-column:9/13;height:200px}
-      .contact-wrap{grid-template-columns:1fr;gap:3.5rem}
-      .formules-intro{flex-direction:column;align-items:flex-start}
-      .form-grid-2{grid-template-columns:1fr}
-      footer{flex-direction:column;align-items:flex-start}.footer-info{text-align:left}
-      .besloten-inner{gap:1.5rem}
+      .r1a{grid-column:1/8;height:260px}.r1b{grid-column:8/13;height:260px}
+      .r2a{grid-column:1/5;height:200px}.r2b{grid-column:5/9;height:200px}.r2c{grid-column:9/13;height:200px}
+      .r3a,.r3b,.r3c,.r3d{display:none}
+      .cwrap{grid-template-columns:1fr;gap:3.5rem}
+      .fi{flex-direction:column;align-items:flex-start}
+      .fg2{grid-template-columns:1fr}
+      footer{flex-direction:column;align-items:flex-start}.finfo{text-align:left}
     }
     @media(max-width:600px){
       section{padding:4rem 0}
-      .gallery-grid{grid-template-columns:1fr 1fr;gap:6px}
-      .g1{grid-column:1/3;height:240px}.g2{grid-column:1/2;height:180px}
-      .g3{grid-column:2/3;height:180px}.g4{grid-column:1/2;height:180px}.g5{grid-column:2/3;height:180px}
-      .kenmerken-grid{grid-template-columns:1fr 1fr}
+      .g-grid{grid-template-columns:1fr 1fr;gap:5px}
+      .r1a{grid-column:1/3;height:220px}.r1b{grid-column:1/2;height:180px}
+      .r2a{grid-column:2/3;height:180px}.r2b{grid-column:1/2;height:180px}.r2c{grid-column:2/3;height:180px}
+      .kgrid{grid-template-columns:1fr 1fr}
+      .binner{gap:1.2rem}
     }
   </style>
 </head>
 <body>
 
 <nav id="nav">
-  <a href="#" class="nav-logo">VITU</a>
-  <a href="#contact" class="nav-cta">Vraag een datum aan</a>
+  <a href="#" class="nl">VITU</a>
+  <a href="#contact" class="nc">Vraag een datum aan</a>
 </nav>
 
 <section class="hero">
-  <img src="photos/hero.jpeg" alt="VITU overzicht" class="hero-img" loading="eager">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Villa te Ursel &nbsp;&middot;&nbsp; Oost-Vlaanderen</p>
-    <h1 class="hero-title">VITU</h1>
-    <p class="hero-tagline">Een plek voor gesprekken die tellen.</p>
+  <img src="photos/hero.jpeg" alt="VITU tuin overzicht" loading="eager">
+  <div class="hero-ov"></div>
+  <div class="hero-cnt">
+    <p class="hero-ey">Villa te Ursel &nbsp;&middot;&nbsp; Oost-Vlaanderen</p>
+    <h1 class="hero-h1">VITU</h1>
+    <p class="hero-tl">Een plek voor gesprekken die tellen.</p>
   </div>
-  <div class="scroll-hint"><div class="scroll-line"></div></div>
+  <div class="sh"><div class="sl"></div></div>
 </section>
 
-<div class="besloten">
-  <div class="besloten-inner">
-    <span class="besloten-item">Volledig besloten</span>
-    <span class="besloten-item">Maximaal 8 personen</span>
-    <span class="besloten-item">Adres enkel na bevestiging</span>
-    <span class="besloten-item">10 min. van E40 Aalter</span>
+<div class="banner">
+  <div class="binner">
+    <span class="bi">Volledig besloten</span>
+    <span class="bi">Maximaal 8 personen</span>
+    <span class="bi">Goed eten &amp; drinken</span>
+    <span class="bi">Warm en ongedwongen</span>
+    <span class="bi">10 min. van E40 Aalter</span>
   </div>
 </div>
 
 <section class="intro">
-  <div class="container--narrow">
-    <p class="label">Wat is VITU</p>
-    <p class="intro-headline">
+  <div class="ctn">
+    <p class="lbl">Wat is VITU</p>
+    <p class="ih">
       Buiten kantoor, maar niet voor een gewone dag.<br>
       Een rustige, <em>besloten plek</em> waar je team<br>
       vrij kan nadenken, praten en beslissen.
     </p>
-    <p class="intro-body">
+    <p class="ib">
       VITU is een privéruimte in een woonhuis midden in de velden van Ursel.
       Geen hotel, geen conferentiezaal. Gewoon een mooie, stille plek waar de
-      tuin in de zomer naadloos overloopt in de meetingroom, waar er gekookt kan
-      worden, gedronken, en waar niemand weet dat je er bent.
+      tuin in de zomer naadloos overloopt in de meetingroom, waar er gekookt
+      kan worden, gedronken, gelachen en waar niemand weet dat je er bent.
     </p>
-    <p class="intro-body" style="margin-top:1rem">
+    <p class="ib">
       Ideaal voor een workshop die ergens naartoe moet, een strategisch gesprek
       dat rust vraagt, of gewoon een dag buiten de muren van het kantoor.
-      Volledig exclusief voor jouw groep &mdash; geen andere teams, geen gedeelde
-      gangen, geen toevallige ontmoetingen.
+      Volledig exclusief voor jouw groep &mdash; geen andere teams, geen
+      toevallige ontmoetingen.
     </p>
-    <div class="intro-pills">
+    <div class="host-note">
+      <strong>Over de eigenaar.</strong> Soms schuift de eigenaar even mee aan tafel &mdash;
+      niet als begeleider, maar gewoon als goede tafelgenoot die graag een goed gesprek voert.
+      Dat gebeurt enkel op uitnodiging en wanneer het past.
+    </div>
+    <div class="pills">
       <span class="pill">Workshops</span>
       <span class="pill">Strategische sessies</span>
       <span class="pill">Jaarplanning</span>
@@ -216,130 +219,140 @@
 </section>
 
 <section class="gallery">
-  <div class="container">
-    <p class="label">De ruimte</p>
-    <div class="gallery-grid">
-      <div class="gi g1"><img src="photos/overview.jpeg" alt="VITU tuin en gebouw" loading="lazy"></div>
-      <div class="gi g2"><img src="photos/columns.jpeg" alt="VITU overdekte wandelgang" loading="lazy"></div>
-      <div class="gi g3"><img src="photos/garden.jpeg" alt="VITU tuin" loading="lazy"></div>
-      <div class="gi g4"><img src="photos/kitchen.jpeg" alt="VITU keuken" loading="lazy"></div>
-      <div class="gi g5"><img src="photos/team.jpeg" alt="Team bij VITU" loading="lazy"></div>
+  <div class="ct">
+    <p class="lbl">De ruimte</p>
+    <div class="g-grid">
+      <div class="gi r1a"><img src="photos/firepit.jpeg" alt="VITU vuurkorf" loading="lazy"></div>
+      <div class="gi r1b"><img src="photos/eating.jpeg" alt="Eten bij VITU" loading="lazy"></div>
+      <div class="gi r2a"><img src="photos/columns.jpeg" alt="VITU overdekte gang" loading="lazy"></div>
+      <div class="gi r2b"><img src="photos/lunch_in.jpeg" alt="Lunch binnen" loading="lazy"></div>
+      <div class="gi r2c"><img src="photos/outdoor_meet.jpeg" alt="Buiten vergaderen" loading="lazy"></div>
+      <div class="gi r3a"><img src="photos/inside_out.jpeg" alt="Binnen kijkend naar buiten" loading="lazy"></div>
+      <div class="gi r3b"><img src="photos/relax.jpeg" alt="Relaxen bij VITU" loading="lazy"></div>
+      <div class="gi r3c"><img src="photos/bureau.jpeg" alt="Bureau VITU" loading="lazy"></div>
+      <div class="gi r3d"><img src="photos/outdoor_kitchen.jpeg" alt="Buitenkeuken" loading="lazy"></div>
     </div>
   </div>
 </section>
 
-<section class="kenmerken">
-  <div class="container">
-    <p class="label">De faciliteiten</p>
-    <h2 class="section-title" style="color:var(--white);margin-bottom:0">Alles aanwezig.<br>Niets overbodig.</h2>
-    <div class="kenmerken-grid">
-      <div class="kenmerk">
-        <div class="kenmerk-nr">01</div>
-        <div class="kenmerk-name">Meetingroom</div>
-        <p class="kenmerk-desc">Volledig uitgerust met scherm, wifi en whiteboard. De deuren gaan open naar het terras en de tuin.</p>
-      </div>
-      <div class="kenmerk">
-        <div class="kenmerk-nr">02</div>
-        <div class="kenmerk-name">Bureau &amp; breakout</div>
-        <p class="kenmerk-desc">Een aparte ruimte om even weg te stappen. Bellen, schrijven, nadenken &mdash; buiten het zicht van de groep.</p>
-      </div>
-      <div class="kenmerk">
-        <div class="kenmerk-nr">03</div>
-        <div class="kenmerk-name">Keuken</div>
-        <p class="kenmerk-desc">Zelf koken of catering laten leveren. Koffie, drankjes en een goede lunch &mdash; alles is mogelijk.</p>
-      </div>
-      <div class="kenmerk">
-        <div class="kenmerk-nr">04</div>
-        <div class="kenmerk-name">Tuin &amp; terras</div>
-        <p class="kenmerk-desc">In de zomer loopt alles open. Buiten vergaderen, rondlopen, even stilstaan. De rust van het platteland.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="quote-section">
-  <div class="container">
-    <p class="quote-text">
-      &ldquo;Niemand weet dat je hier bent.<br>
-      Soms is dat precies wat je nodig hebt.&rdquo;
-    </p>
-    <p class="quote-source">VITU &nbsp;&middot;&nbsp; Ursel</p>
-  </div>
-</section>
-
-<section class="formules">
-  <div class="container">
-    <div class="formules-intro">
+<section class="ken">
+  <div class="ct">
+    <p class="lbl">De faciliteiten</p>
+    <h2 class="st" style="color:var(--white);margin-bottom:0">Alles aanwezig.<br>Niets overbodig.</h2>
+    <div class="kgrid">
       <div>
-        <p class="label">Formules</p>
-        <h2 class="section-title">Kies je dag</h2>
+        <div class="knr">01</div>
+        <div class="kna">Meetingroom</div>
+        <p class="kde">Volledig uitgerust met scherm, wifi en whiteboard. De deuren gaan open naar het terras en de tuin.</p>
       </div>
-      <p class="formules-note">Catering op aanvraag: &euro;35&ndash;50 per persoon. Prijzen excl. btw.</p>
+      <div>
+        <div class="knr">02</div>
+        <div class="kna">Bureau &amp; breakout</div>
+        <p class="kde">Een aparte ruimte om even weg te stappen. Bellen, schrijven, nadenken &mdash; buiten het zicht van de groep.</p>
+      </div>
+      <div>
+        <div class="knr">03</div>
+        <div class="kna">Keuken</div>
+        <p class="kde">Zelf koken of catering laten leveren. Koffie, drankjes en een goede lunch &mdash; alles is mogelijk.</p>
+      </div>
+      <div>
+        <div class="knr">04</div>
+        <div class="kna">Tuin &amp; terras</div>
+        <p class="kde">In de zomer loopt alles open. Buiten vergaderen, rondlopen, even stilstaan. De rust van het platteland.</p>
+      </div>
     </div>
-    <div class="formules-grid">
-      <div class="formule-card">
-        <div class="formule-badge">Halve dag</div>
-        <h3 class="formule-naam">Ochtend of middag</h3>
-        <p class="formule-prijs">&euro;250</p>
-        <p class="formule-prijs-note">4 uur exclusief gebruik &middot; excl. btw</p>
-        <p class="formule-desc">Compact en gericht. Voor een workshop, een beslissend gesprek, of een creatieve sessie met een kleine groep.</p>
-        <ul class="formule-list">
+  </div>
+</section>
+
+<section class="qs">
+  <div class="ct">
+    <p class="qt">&ldquo;Niemand weet dat je hier bent.<br>Soms is dat precies wat je nodig hebt.&rdquo;</p>
+    <p class="qsrc">VITU &nbsp;&middot;&nbsp; Ursel</p>
+  </div>
+</section>
+
+<section class="form-sec">
+  <div class="ct">
+    <div class="fi">
+      <div>
+        <p class="lbl">Formules</p>
+        <h2 class="st">Kies je dag</h2>
+      </div>
+      <p class="fn">Catering op aanvraag: &euro;35&ndash;50 per persoon. Prijzen excl. btw.</p>
+    </div>
+    <div class="fgrid">
+
+      <div class="fc">
+        <div>
+          <span class="fb">Halve dag</span>
+          <span class="fop">Openingsprijs</span>
+        </div>
+        <h3 class="fna">Ochtend of middag</h3>
+        <p class="fpr">&euro;200</p>
+        <p class="fpn">4 uur exclusief gebruik &middot; excl. btw</p>
+        <p class="fds">Compact en gericht. Voor een workshop, een beslissend gesprek of een creatieve sessie met een kleine groep.</p>
+        <ul class="fl">
           <li>Meetingroom + terras</li>
           <li>Wifi &amp; presentatiescherm</li>
           <li>Koffie &amp; drankjes inbegrepen</li>
           <li>Toilet &amp; douche</li>
           <li>Max. 8 personen</li>
         </ul>
-        <p class="formule-extra">Catering op aanvraag</p>
+        <p class="fex">Catering op aanvraag</p>
       </div>
-      <div class="formule-card featured">
-        <div class="formule-badge">Volledige dag</div>
-        <h3 class="formule-naam">Van ochtend tot avond</h3>
-        <p class="formule-prijs" style="color:var(--white)">&euro;450</p>
-        <p class="formule-prijs-note">8 uur exclusief gebruik &middot; excl. btw</p>
-        <p class="formule-desc">De ruimte om echt iets te bereiken. Genoeg tijd voor een ochtendsessie, een rustige lunch en een namiddag die ergens naartoe leidt.</p>
-        <ul class="formule-list">
+
+      <div class="fc ft">
+        <div>
+          <span class="fb">Volledige dag</span>
+          <span class="fop">Openingsprijs</span>
+        </div>
+        <h3 class="fna">Van ochtend tot avond</h3>
+        <p class="fpr">&euro;350</p>
+        <p class="fpn">8 uur exclusief gebruik &middot; excl. btw</p>
+        <p class="fds">Genoeg tijd voor een ochtendsessie, een rustige lunch en een namiddag die ergens naartoe leidt.</p>
+        <ul class="fl">
           <li>Alles van de halfdagformule</li>
           <li>Bureau als breakout-ruimte</li>
           <li>Volledige dag (8u) exclusief</li>
           <li>Tuin &amp; alle buitenruimtes</li>
           <li>Catering volledig op maat</li>
         </ul>
-        <p class="formule-extra">Inclusief lunch op aanvraag</p>
+        <p class="fex">Inclusief lunch op aanvraag</p>
       </div>
-      <div class="formule-card">
-        <div class="formule-badge">Op maat</div>
-        <h3 class="formule-naam">Meerdere dagen</h3>
-        <p class="formule-prijs">Op aanvraag</p>
-        <p class="formule-prijs-note">Tweedaags retreat of vaste terugkeer</p>
-        <p class="formule-desc">Voor wie echt de tijd wil nemen. Een tweedaagse diepteduik, een reeks maandelijkse sessies &mdash; we kijken samen wat past.</p>
-        <ul class="formule-list">
+
+      <div class="fc">
+        <div>
+          <span class="fb">Op maat</span>
+        </div>
+        <h3 class="fna">Zeg wat je nodig hebt</h3>
+        <p class="fpr">Op aanvraag</p>
+        <p class="fpn">We werken samen iets uit</p>
+        <p class="fds">Meerdere dagen, een vaste terugkeer, iets dat er tussenin zit? Vertel gewoon wat je zoekt &mdash; we kijken samen wat past.</p>
+        <ul class="fl">
           <li>Volledig op maat</li>
           <li>Catering volledig voorzien</li>
           <li>Flexibele opbouw</li>
           <li>Vaste beschikbaarheid mogelijk</li>
         </ul>
-        <p class="formule-extra">Prijs op aanvraag &middot; Beperkte beschikbaarheid</p>
+        <p class="fex">Geen vaste formule nodig</p>
       </div>
+
     </div>
   </div>
 </section>
 
-<div class="foto-breed">
-  <img src="photos/terrace.jpeg" alt="VITU terras en keuken" loading="lazy">
+<div class="fb-breed">
+  <img src="photos/terrace.jpeg" alt="VITU terras" loading="lazy">
 </div>
 
 <section class="contact" id="contact">
-  <div class="container">
-    <div class="contact-wrap">
+  <div class="ct">
+    <div class="cwrap">
       <div>
-        <p class="label">Reserveren</p>
-        <h2 class="section-title">Vraag een datum aan</h2>
-        <p class="contact-body">
-          Vertel kort wat je in gedachten hebt. We antwoorden binnen 24 uur
-          en kijken samen of de datum beschikbaar is.
-        </p>
-        <dl class="contact-detail">
+        <p class="lbl">Reserveren</p>
+        <h2 class="st">Vraag een datum aan</h2>
+        <p class="cbody">Vertel kort wat je in gedachten hebt. We antwoorden binnen 24 uur en kijken samen of de datum beschikbaar is.</p>
+        <dl class="cdet">
           <dt>Locatie</dt>
           <dd>Ursel, Oost-Vlaanderen<br><small style="opacity:.6">(exact adres na bevestiging)</small></dd>
           <dt>Bereikbaarheid</dt>
@@ -352,53 +365,33 @@
       </div>
       <div>
         <form id="aanvraagForm">
-          <div class="form-grid-2">
-            <div class="form-row">
-              <label>Naam *</label>
-              <input type="text" id="f-naam" placeholder="Je naam" required>
-            </div>
-            <div class="form-row">
-              <label>Organisatie</label>
-              <input type="text" id="f-org" placeholder="Bedrijf of team">
-            </div>
+          <div class="fg2">
+            <div class="fr"><label>Naam *</label><input type="text" id="f-naam" placeholder="Je naam" required></div>
+            <div class="fr"><label>Organisatie</label><input type="text" id="f-org" placeholder="Bedrijf of team"></div>
           </div>
-          <div class="form-grid-2">
-            <div class="form-row">
+          <div class="fg2">
+            <div class="fr">
               <label>Aantal personen</label>
               <select id="f-personen">
                 <option value="">-- kies --</option>
-                <option>2 personen</option>
-                <option>3 personen</option>
-                <option>4 personen</option>
-                <option>5 personen</option>
-                <option>6 personen</option>
-                <option>7 personen</option>
-                <option>8 personen</option>
+                <option>2 personen</option><option>3 personen</option><option>4 personen</option>
+                <option>5 personen</option><option>6 personen</option><option>7 personen</option><option>8 personen</option>
               </select>
             </div>
-            <div class="form-row">
+            <div class="fr">
               <label>Formule</label>
               <select id="f-formule">
                 <option value="">-- kies --</option>
-                <option>Halve dag (250 euro)</option>
-                <option>Volledige dag (450 euro)</option>
-                <option>Op maat / meerdere dagen</option>
+                <option>Halve dag (200 euro)</option>
+                <option>Volledige dag (350 euro)</option>
+                <option>Op maat</option>
               </select>
             </div>
           </div>
-          <div class="form-row">
-            <label>Gewenste datum(s)</label>
-            <input type="text" id="f-datum" placeholder="bv. week van 15 september, of flexibel">
-          </div>
-          <div class="form-row">
-            <label>Waarvoor wil je VITU gebruiken? *</label>
-            <textarea id="f-bericht" placeholder="Een strategische sessie, jaarplanning, workshop..." required></textarea>
-          </div>
-          <button type="submit" class="btn-aanvragen">Stuur aanvraag</button>
-          <div class="form-feedback" id="formFeedback">
-            Je e-mailprogramma opent met een vooraf ingevulde boodschap.
-            Verstuur de mail om je aanvraag te bevestigen &mdash; we antwoorden binnen 24 uur.
-          </div>
+          <div class="fr"><label>Gewenste datum(s)</label><input type="text" id="f-datum" placeholder="bv. week van 15 september, of flexibel"></div>
+          <div class="fr"><label>Waarvoor wil je VITU gebruiken? *</label><textarea id="f-bericht" placeholder="Een strategische sessie, jaarplanning, workshop..." required></textarea></div>
+          <button type="submit" class="btn">Stuur aanvraag</button>
+          <div class="ffb" id="formFeedback">Je e-mailprogramma opent met een vooraf ingevulde boodschap. Verstuur de mail om je aanvraag te bevestigen &mdash; we antwoorden binnen 24 uur.</div>
         </form>
       </div>
     </div>
@@ -406,8 +399,8 @@
 </section>
 
 <footer>
-  <div class="footer-logo">VITU</div>
-  <div class="footer-info">Villa te Ursel &middot; Oost-Vlaanderen<br>&copy; 2025 VITU</div>
+  <div class="flogo">VITU</div>
+  <div class="finfo">Villa te Ursel &middot; Oost-Vlaanderen<br>&copy; 2025 VITU</div>
 </footer>
 
 <script>
